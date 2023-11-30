@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+	<div class="sidebar-sticky">
+		<ul class="nav flex-column">
+
+			<c:if test="${ sessionScope.userService.currentUser.userRole.id == 7 }">
+				<li class="nav-item"><a class="nav-link ${ requestScope.navigationService.currentNavItem.text == 'Users' ? 'active' : '' }"
+					href="<c:url value="/dashboard/users/approve" />"> <i class="fas fa-users px-2"></i> Пользователи
+				</a></li>
+			</c:if>
+			
+			<c:if test="${ sessionScope.userService.currentUser.userRole.id == 7 or sessionScope.userService.currentUser.userRole.id == 6}">
+			<li class="nav-item"><a class="nav-link ${ requestScope.navigationService.currentNavItem.text == 'Articles' ? 'active' : '' }"
+				href="<c:url value="/dashboard/articles/approve" />"> <i class="fas fa-file-alt px-2"></i> <span class="ml-1">Статьи</span>
+			</a></li>
+			</c:if>
+			
+			<c:if test="${ sessionScope.userService.currentUser.userRole.id == 7 or sessionScope.userService.currentUser.userRole.id == 6 or sessionScope.userService.currentUser.userRole.id == 5}">
+			<li class="nav-item"><a class="nav-link ${ requestScope.navigationService.currentNavItem.text == 'Categories' ? 'active' : '' }"
+				href="<c:url value="/dashboard/categories/add" />"> <i class="fas fa-list-ul px-2"></i> <span class="ml-1">Категории</span>
+			</a></li>
+			</c:if>
+			
+			<c:if test="${ sessionScope.userService.currentUser.userRole.id == 7 or sessionScope.userService.currentUser.userRole.id == 6 or sessionScope.userService.currentUser.userRole.id == 5}">
+			<li class="nav-item"><a class="nav-link ${ requestScope.navigationService.currentNavItem.text == 'Comments' ? 'active' : '' }"
+				href="<c:url value="/dashboard/comments/approve" />"> <i class="fas fa-comments px-2"></i> Коментарии
+			</a></li>
+			</c:if>
+		</ul>
+	</div>
+</nav>

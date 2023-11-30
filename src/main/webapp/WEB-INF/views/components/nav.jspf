@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="<c:url value="/home"/>">Sport News</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item ${ requestScope.navigationService.currentNavItem.text == 'Home' ? 'active' : '' }"><a class="nav-link" href="<c:url value="/home"/>">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				
+				<c:forEach items="${ requestScope.navigationService.navigationItems }" var="navItem">
+					<li class="nav-item ${ requestScope.navigationService.currentNavItem.text == 'Category' and requestScope.navigationService.currentNavItem.id == navItem.id ? 'active' : '' }"><a class="nav-link" href="${ navItem.url }">${ navItem.text }</a>
+				</li>
+				</c:forEach>
+			</ul>
+			<ul class="navbar-nav justify-content-end">
+
+				<li class="nav-item ${ requestScope.navigationService.currentNavItem.text == 'Sign in' ? 'active' : '' }"><a class="nav-link" href="login"><i
+						class="fas fa-sign-in-alt"></i> Sign in</a></li>
+				<li class="nav-item ${ requestScope.navigationService.currentNavItem.text == 'Sign up' ? 'active' : '' }"><a class="nav-link" href="sign-up"><i
+						class="fas fa-user"></i> Sign up</a></li>
+			</ul>
+		</div>
+	</nav>
